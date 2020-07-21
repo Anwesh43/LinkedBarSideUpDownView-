@@ -181,4 +181,27 @@ class BarSideUpDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BarSideUpDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val bsud : BarSideUpDown = BarSideUpDown(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            bsud.draw(canvas, paint)
+            animator.animate {
+                bsud.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            bsud.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
