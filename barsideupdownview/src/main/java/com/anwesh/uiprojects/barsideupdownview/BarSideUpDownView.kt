@@ -204,4 +204,13 @@ class BarSideUpDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : BarSideUpDownView {
+            val view : BarSideUpDownView = BarSideUpDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
