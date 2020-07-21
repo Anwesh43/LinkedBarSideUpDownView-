@@ -17,7 +17,7 @@ val colors : Array<String> = arrayOf("#3F51B5", "#009688", "#F44336", "#2196F3",
 val parts : Int = 2
 val scGap : Float = 0.02f / parts
 val sizeFactor : Float = 8.9f
-val delay : Long = 90
+val delay : Long = 20
 val backColor : Int = Color.parseColor("#BDBDBD")
 
 fun Int.inverse() : Float = 1f / this
@@ -34,8 +34,8 @@ fun Canvas.drawUpDownSideBar(i : Int, scale : Float, w : Float, h : Float, paint
     scale(1f - 2 * i, 1f - 2 * i)
     translate(0f, h / 2 - barSize)
     drawRect(RectF(0f, 0f, (w / 2 - barSize) * sf1, barSize), paint)
-    translate(w / 2 - barSize, 0f)
-    drawRect(RectF(0f, -(h / 2 - barSize) * sf2, barSize, 0f), paint)
+    translate(w / 2 - barSize, barSize)
+    drawRect(RectF(0f, -(h / 2) * sf2, barSize, 0f), paint)
     restore()
 }
 
